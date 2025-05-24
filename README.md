@@ -128,4 +128,4 @@ src/
 
 For any queries or support, please contact:
 
-- Project Link: [https://github.com/Pratikshya01/skillverse-react](https://github.com/Pratikshya01/skillverse-react)
+- Project Link: [[https://github.com/Pratikshya01/skillverse](https://github.com/Pratikshya01/skillverse)]
