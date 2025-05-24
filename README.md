@@ -128,4 +128,6 @@ src/
 
 For any queries or support, please contact:
 
-- Project Link: [[https://github.com/Pratikshya01/skillverse](https://github.com/Pratikshya01/skillverse)]
+- Github Link: [[https://github.com/Pratikshya01/skillverse](https://github.com/Pratikshya01/skillverse)]
+
+- [Live Link](https://skillverse-udemy-clone.netlify.app/login)
