@@ -10,7 +10,7 @@ import Toast from "../components/Toast";
 import { User, Camera } from "lucide-react";
 import { capitalizeName } from "../utils/stringUtils";
 
-const Profile = () => {
+const Profile = ({ role }) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.user);
   const { user } = useSelector((state) => state.auth);
@@ -103,12 +103,12 @@ const Profile = () => {
 
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append('first_name', formData.first_name);
-      formDataToSend.append('last_name', formData.last_name);
-      formDataToSend.append('email', formData.email);
-      
+      formDataToSend.append("first_name", formData.first_name);
+      formDataToSend.append("last_name", formData.last_name);
+      formDataToSend.append("email", formData.email);
+
       if (formData.profilePicture instanceof File) {
-        formDataToSend.append('profilePicture', formData.profilePicture);
+        formDataToSend.append("profilePicture", formData.profilePicture);
       }
 
       const result = await dispatch(
@@ -117,8 +117,8 @@ const Profile = () => {
           userData: formDataToSend,
         })
       ).unwrap();
-      
-      dispatch(updateUser(result.user));
+
+      dispatch(updateUser({ ...result.user, role }));
       setIsEditing(false);
       setShowToast(true);
       setToastMessage("Profile updated successfully!");
@@ -126,7 +126,7 @@ const Profile = () => {
 
       // Reset the preview image and profile picture in form data
       setPreviewImage(result.user.profilePicture || null);
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         profilePicture: null,
       }));
@@ -134,8 +134,8 @@ const Profile = () => {
       setShowToast(true);
       setToastMessage(
         error?.message ||
-        error?.response?.data?.message ||
-        "Failed to update profile"
+          error?.response?.data?.message ||
+          "Failed to update profile"
       );
       setToastType("error");
     } finally {
@@ -188,7 +188,9 @@ const Profile = () => {
                           />
                         ) : user?.profilePicture ? (
                           <img
-                            src={`${import.meta.env.VITE_API_URL}/${user.profilePicture}`}
+                            src={`${import.meta.env.VITE_API_URL}/${
+                              user.profilePicture
+                            }`}
                             alt="Profile"
                             className="w-full h-full object-cover"
                           />
@@ -296,7 +298,7 @@ const Profile = () => {
                       disabled={isLoading}
                       className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors disabled:opacity-50"
                     >
-                      {isLoading ? 'Saving...' : 'Save Changes'}
+                      {isLoading ? "Saving..." : "Save Changes"}
                     </button>
                   </div>
                 </form>

@@ -71,6 +71,14 @@ function App() {
               }
             />
             <Route
+              path="/profile"
+              element={
+                <ProtectedRoute allowedRoles={["student"]}>
+                  <Profile role="student" />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="/courses"
               element={
                 <ProtectedRoute allowedRoles={["student"]}>
@@ -135,14 +143,6 @@ function App() {
               element={
                 <ProtectedRoute>
                   <VideoPlayer />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
-                  <Profile />
                 </ProtectedRoute>
               }
             />

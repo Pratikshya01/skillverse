@@ -1,12 +1,12 @@
-import Profile from '../Profile';
-import InstructorLayout from '../../components/InstructorLayout';
+import Profile from "../Profile";
+import InstructorLayout from "../../components/InstructorLayout";
 
 const InstructorProfile = () => {
   return (
     <InstructorLayout>
-      <Profile />
+      <Profile role="instructor" />
     </InstructorLayout>
   );
 };
 
-export default InstructorProfile; 
+export default InstructorProfile;
