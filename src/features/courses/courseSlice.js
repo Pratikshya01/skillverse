@@ -49,7 +49,7 @@ export const filterCoursesByCategory = createAsyncThunk(
   async (categoryIds, { rejectWithValue }) => {
     try {
       const response = await api.get(
-        `/course/filter/category?categories=${categoryIds.join(",")}`
+        `/course/filter/category?category=${categoryIds.join(",")}`
       );
       return {
         courses: response.data.data,
